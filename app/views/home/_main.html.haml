@@ -1,7 +1,6 @@
 .app
   .app__sidebar.js-nicescroll
-    ユーザーリスト
-    .div{style: 'width: 100px; height: 1000px; background-color: red;'}
+    = render 'users/users', users: User.order(posts_updated_at: :desc)
   .app__main.js-nicescroll
     日報
 
