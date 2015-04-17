@@ -1,6 +1,5 @@
-ホーム
-%div
-  - if user_signed_in?
-    ログインしています。
-  - else
-    ログインしていません。
+- unless user_signed_in?
+  .text-center
+    %h3 n2jkAcademy
+    = link_to 'GitHubアカウントでログイン', sign_in_path, class: 'btn btn-success'
+

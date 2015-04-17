@@ -18,16 +18,16 @@
         %a.navbar-brand{href: root_url}
           n2jkAcademy
       .collapse.navbar-collapse#js-navbar-collapse
-        -#%ul.nav.navbar-nav.navbar-right
-        -#  - if user_signed_in?
-        -#    %li
-        -#      %button.btn.btn-success.navbar-btn.js-new-post-button{data: {url: new_post_path}}
-        -#        投稿
-        -#    %li.dropdown
-        -#      %a.dropdown-toggle{href: '#', data: {toggle: 'dropdown'}}
-        -#        = current_user.name
-        -#      %ul.dropdown-menu
-        -#        %li= link_to 'アカウント設定', '#'
-        -#        %li= link_to 'ログアウト', sign_out_path, method: :delete
+        %ul.nav.navbar-nav.navbar-right
+          - if user_signed_in?
+            -#%li
+            -#  %button.btn.btn-success.navbar-btn.js-new-post-button{data: {url: new_post_path}}
+            -#    投稿
+            %li.dropdown
+              %a.dropdown-toggle{href: '#', data: {toggle: 'dropdown'}}
+                = current_user.name
+              %ul.dropdown-menu
+                %li= link_to 'アカウント設定', '#'
+                %li= link_to 'ログアウト', sign_out_path, method: :delete
 
     = yield
