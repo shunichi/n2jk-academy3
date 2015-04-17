@@ -1,0 +1,2 @@
+$ ->
+  $('.js-nicescroll').niceScroll()
