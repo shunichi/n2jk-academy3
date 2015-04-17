@@ -24,7 +24,7 @@
               .comment__body.js-toggle-comment-edit
                 - if comment.not_read_yet?(current_user)
                   .unread-dot-upper-right
-                = simple_format(comment.body)
+                = markdown(comment.body)
                 %small.text-muted.pull-right.comments__created_at
                   = l comment.created_at
                 - if comment.user == current_user

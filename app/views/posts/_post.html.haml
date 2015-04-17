@@ -3,7 +3,7 @@
     .post__date= l post.created_at
   .panel-body
     .post__body.js-toggle-post-edit
-      = simple_format(post.body)
+      = markdown(post.body)
       - if post.user == current_user
         = link_to fa_icon('pencil', text: '編集'), '.js-toggle-post-edit', class: 'btn btn-link btn-sm js-toggle-collapse-link'
     - if post.user == current_user
