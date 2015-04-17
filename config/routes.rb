@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :posts, only: %i(create update destroy), module: 'mine'
 
-  resources :users, only: [] do
+  resources :users, only: %i(show) do
     resources :posts, only: %i(index show)
   end
 

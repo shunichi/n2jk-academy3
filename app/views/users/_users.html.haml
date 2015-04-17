@@ -1,9 +1,9 @@
 %ul.users
   - users.each do |user|
     %li.user
-      = link_to user_posts_path(user), remote: true, format: 'js', class: 'user__item-link' do
+      = link_to user, remote: true, class: 'user__item-link' do
         = image_tag user.image, class: 'user__icon'
         .user__info
-          .user__name= user.name
+          .user__name= user.nickname || user.name
           .user__posts-updated-at= l user.posts_updated_at.to_date
 

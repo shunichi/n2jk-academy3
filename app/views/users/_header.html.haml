@@ -1,0 +1,26 @@
+:sass
+  .user-header
+    &::after
+      content: ""
+      clear: both
+      display: block
+      height: 0
+      visibility: hidden
+
+  .user-header__icon
+    float: left
+    margin-right: 10px
+    width: 40px
+    height: 40px
+    border-radius: 50%
+
+  .user-header__info
+    float: left
+
+.user-header
+  = image_tag user.image, class: 'user-header__icon'
+  .user-header__info
+    %span.user-header__name= user.nickname || user.name
+    %span.user_header__posts-count
+      #{user.posts.count}件投稿
+    .user-header__created-at= l user.created_at.to_date
