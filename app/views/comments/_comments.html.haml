@@ -3,24 +3,34 @@
     list-style: none
     padding: 10px
 
-  .comments__user-icon
+  .comment__user-icon
     width: 40px
     height: 40px
 
-  .comments__list-item
+  .comment
 
 %ul.comments
   - post.comments.order(:created_at).each do |comment|
-    %li.comments__list-item
+    %li.comment{data: {comment_id: comment.id}}
       .row
         .col-md-1
-          = image_tag comment.user.image, class: 'comments__user-icon'
+          = image_tag comment.user.image, class: 'comment__user-icon'
         .col-md-11
           .panel.panel-default
             .panel-body
-              = simple_format(comment.body)
-              %small.text-muted.pull-right.comments__created_at
-                = l comment.created_at
+              .comment__body.js-toggle-comment-edit
+                = simple_format(comment.body)
+                %small.text-muted.pull-right.comments__created_at
+                  = l comment.created_at
+                - if comment.user == current_user
+                  = link_to fa_icon('pencil', text: '編集'), "[data-comment-id=#{comment.id}] .js-toggle-comment-edit", class: 'btn btn-link btn-sm js-toggle-collapse-link'
+              - if comment.user == current_user
+                .comment__edit-form.js-toggle-comment-edit.is-collapsed
+                  = simple_form_for [post, comment], remote: true do |f|
+                    = f.input :body, label: false, input_html: {rows: 3}
+                    = f.button :submit, '更新', class: 'btn btn-warning btn-sm'
+                    = link_to 'キャンセル', "[data-comment-id=#{comment.id}] .js-toggle-comment-edit", class: 'btn btn-default btn-sm js-toggle-collapse-link'
+                    = link_to '削除', [post, comment], method: :delete, remote: true, class: 'btn btn-link btn-sm pull-right', data: {confirm: '削除してもいいですか？', disable_with: '削除中...'}
 .comment-form
   = simple_form_for [post, post.comments.build()], remote: true do |f|
     = f.input :body, label: false, input_html: { rows: 3, placeholder: 'コメントする...' }
