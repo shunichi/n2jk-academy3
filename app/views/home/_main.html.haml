@@ -1,8 +1,10 @@
 .app
   .app__sidebar.js-nicescroll
     = render 'users/users', users: User.order(posts_updated_at: :desc)
-  .app__main.js-nicescroll
+  .app__main.js-post.js-nicescroll
     日報
 
-  .app__posts-list.js-nicescroll
+  .app__posts-list.js-posts-list.js-nicescroll
     日報リスト
+
+= render 'posts/modal_form'

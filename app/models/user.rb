@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  has_many :posts
 
   serialize :auth_hash, JSON
 

@@ -1,0 +1,23 @@
+:sass
+  .posts
+    list-style: none
+    padding: 0
+  .posts__list-item
+    height: 40px
+    border-bottom: 1px solid #cccccc
+  .posts__list-item-link
+    display: block
+    width: 100%
+    height: 100%
+  .posts__list-item-date
+    font-size: 14px
+
+  .posts__list-item-title
+    font-size: 14px
+
+%ul.posts
+  - posts.each do |post|
+    %li.posts__list-item{id: "post-#{post.id}"}
+      = link_to [post.user, post], remote: true, class: 'posts__list-item-link js-posts-list-item' do
+        .posts__list-item-date= l post.created_at
+        .posts__list-item-title= post.title
