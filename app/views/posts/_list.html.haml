@@ -2,5 +2,8 @@
   - posts.each do |post|
     %li.posts__list-item{id: "post-#{post.id}"}
       = link_to [post.user, post], remote: true, class: 'posts__list-item-link js-posts-list-item' do
-        .posts__list-item-date= l post.created_at
+        .posts__list-item-date
+          = l post.created_at
+          - if post.not_read_yet?(current_user) || post.has_unread_comments?(current_user)
+            %span.unread-dot-inline
         .posts__list-item-title= post.title

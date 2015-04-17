@@ -9,6 +9,9 @@
 
   .comment
 
+  .comment__body
+    position: relative
+
 %ul.comments
   - post.comments.order(:created_at).each do |comment|
     %li.comment{data: {comment_id: comment.id}}
@@ -19,6 +22,8 @@
           .panel.panel-default
             .panel-body
               .comment__body.js-toggle-comment-edit
+                - if comment.not_read_yet?(current_user)
+                  .unread-dot-upper-right
                 = simple_format(comment.body)
                 %small.text-muted.pull-right.comments__created_at
                   = l comment.created_at
