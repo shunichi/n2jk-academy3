@@ -1,0 +1,4 @@
+host: YOUR-APP-HOSTNAME
+mail_sender: '"YOUR-APP" <noreply@YOUR-APP-HOSTNAME>'
+mandrill_username: YOUR-APP@heroku.com
+mandrill_apikey: YOUR-APP-MANDRILL-API-KEY
