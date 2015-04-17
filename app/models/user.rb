@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
 
   serialize :auth_hash, JSON
 
+  scope :write_some_post, -> { where(id: Post.pluck(:user_id).uniq) }
+
   def self.create_by_github(auth)
     User.create!(
         github_id: auth[:uid],

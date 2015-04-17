@@ -1,6 +1,6 @@
 .app
   .app__sidebar.js-nicescroll
-    = render 'users/users', users: User.order(posts_updated_at: :desc)
+    = render 'users/users', users: User.write_some_post.order(posts_updated_at: :desc)
   .app__main.js-nicescroll
     .app__user-header.js-user-header
     .app__post.js-post
