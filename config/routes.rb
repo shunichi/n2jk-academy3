@@ -9,7 +9,11 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: %i(show) do
-    resources :posts, only: %i(show)
+    resources :posts, only: %i(show) do
+      member do
+        patch 'read'
+      end
+    end
   end
 
   get '/auth/github/callback', to: 'sessions#create'

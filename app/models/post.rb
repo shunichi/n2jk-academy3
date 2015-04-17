@@ -11,12 +11,35 @@ class Post < ActiveRecord::Base
     self.body.lines.reject(&:blank?).first.try(:gsub, /\A#+\s*/, '')
   end
 
+  def unread_for(user)
+    self.unreads.find_by(user: user)
+  end
+
   def not_read_yet?(user)
-    self.unreads.find_by(user: user).present?
+    unread_for(user).present?
+  end
+
+  def unread_comments_for(user)
+    self.comments.joins(:unreads).where(unreads: {user_id: user.id})
   end
 
   def has_unread_comments?(user)
-    self.comments.joins(:unreads).where(unreads: {user_id: user.id}).present?
+    unread_comments_for(user).present?
+  end
+
+  def read_by(user)
+    destroyed = false
+    unread = self.unread_for(user)
+    if unread
+      unread.destroy()
+      destroyed = true
+    end
+    comment_unreads = Unread.where(resource: self.unread_comments_for(user))
+    if comment_unreads.present?
+      comment_unreads.destroy_all()
+      destroyed = true
+    end
+    destroyed
   end
 
   private

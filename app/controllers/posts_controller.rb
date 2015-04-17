@@ -1,8 +1,12 @@
 class PostsController < ApplicationController
   before_action :set_user
-  before_action :set_post, only: [:show]
+  before_action :set_post
 
   def show
+  end
+
+  def read
+    head :no_content unless @post.read_by(current_user)
   end
 
   private

@@ -1,12 +1,12 @@
 %ul.users
   - users.each do |user|
-    %li.user
+    %li.user{data: {user_id: user.id}}
       = link_to user, remote: true, class: 'user__item-link' do
         = image_tag user.image, class: 'user__icon'
         .user__info
           .user__name
             = user.nickname || user.name
             - if user.has_unreads_for(current_user)
-              %span.unread-dot-inline
+              %span.unread-dot-inline.js-unread-dot
           .user__posts-updated-at= l user.posts_updated_at.to_date
 

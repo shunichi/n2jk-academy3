@@ -5,5 +5,5 @@
         .posts__list-item-date
           = l post.created_at
           - if post.not_read_yet?(current_user) || post.has_unread_comments?(current_user)
-            %span.unread-dot-inline
+            %span.unread-dot-inline.js-unread-dot
         .posts__list-item-title= post.title
