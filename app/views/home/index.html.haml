@@ -1,1 +1,6 @@
 ホーム
+%div
+  - if user_signed_in?
+    ログインしています。
+  - else
+    ログインしていません。
