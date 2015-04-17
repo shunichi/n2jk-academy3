@@ -1,0 +1,27 @@
+:sass
+  .comments
+    list-style: none
+    padding: 10px
+
+  .comments__user-icon
+    width: 40px
+    height: 40px
+
+  .comments__list-item
+
+%ul.comments
+  - post.comments.order(:created_at).each do |comment|
+    %li.comments__list-item
+      .row
+        .col-md-1
+          = image_tag comment.user.image, class: 'comments__user-icon'
+        .col-md-11
+          .panel.panel-default
+            .panel-body
+              = simple_format(comment.body)
+              %small.text-muted.pull-right.comments__created_at
+                = l comment.created_at
+.comment-form
+  = simple_form_for [post, post.comments.build()], remote: true do |f|
+    = f.input :body, label: false, input_html: { rows: 3, placeholder: 'コメントする...' }
+    = f.button :submit, '投稿', class: 'btn btn-warning btn-sm', data: {disable_with: '送信中...'}

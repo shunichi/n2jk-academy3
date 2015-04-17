@@ -2,10 +2,14 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
-  resources :posts, only: %i(create update destroy), module: 'mine'
+  scope module: 'mine' do
+    resources :posts, only: %i(create update destroy) do
+      resources :comments, only: %i(create update destroy)
+    end
+  end
 
   resources :users, only: %i(show) do
-    resources :posts, only: %i(index show)
+    resources :posts, only: %i(show)
   end
 
   get '/auth/github/callback', to: 'sessions#create'
