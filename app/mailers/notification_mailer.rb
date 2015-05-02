@@ -18,6 +18,6 @@ class NotificationMailer < ApplicationMailer
     %!"#{name} (via n2jk-academy)" <n2jk-academy@sonicgarden.jp>!
   end
   def format_subject(subject)
-    "[n2jk-academy] #{subject}"
+    "[n2jk-academy] #{subject.truncate(20)}"
   end
 end
