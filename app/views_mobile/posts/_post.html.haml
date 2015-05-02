@@ -1,0 +1,16 @@
+.panel.panel-default
+  .panel-heading
+    = image_tag post.user.image, class: 'moblie-post__icon'
+    = l post.created_at
+  .panel-body
+    .mobile-post__body.js-toggle-post-edit
+      = markdown(post.body)
+      - if post.user == current_user
+        = link_to fa_icon('pencil', text: '編集'), '.js-toggle-post-edit', class: 'btn btn-link btn-sm js-toggle-collapse-link'
+    - if post.user == current_user
+      .mobile-post__edit.js-toggle-post-edit.is-collapsed
+        = simple_form_for post, remote: true do |f|
+          = f.input :body, label: false, input_html: {rows: 15}
+          = f.button :submit, '更新', class: 'btn btn-warning btn-sm', data: {disable_with: '送信中...'}
+          = link_to 'キャンセル', '.js-toggle-post-edit', class: 'btn btn-default btn-sm js-toggle-collapse-link'
+          = link_to '削除', post, method: :delete, class: 'btn btn-link btn-sm pull-right', data: {confirm: '削除してもよろしいですか？', disable_with: '削除中...'}

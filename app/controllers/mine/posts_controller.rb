@@ -31,6 +31,7 @@ class Mine::PostsController < ApplicationController
   def destroy
     @post.destroy
     respond_to do |format|
+      format.html { redirect_to current_user }
       format.js { render }
     end
   end

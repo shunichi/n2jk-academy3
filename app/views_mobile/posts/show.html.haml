@@ -1,9 +1,5 @@
 = link_to '< 戻る', user_path(@post.user)
-.panel.panel-default
-  .panel-heading
-    = image_tag @post.user.image, class: 'moblie-post__icon'
-    = l @post.created_at
-  .panel-body
-    = markdown(@post.body)
+.js-post
+  = render 'posts/post', post: @post
 .mobile-post__comment.js-comments
   = render 'comments/comments', post: @post
