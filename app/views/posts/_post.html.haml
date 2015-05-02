@@ -13,5 +13,5 @@
           = f.button :submit, '更新', class: 'btn btn-warning btn-sm', data: {disable_with: '送信中...'}
           = link_to 'キャンセル', '.js-toggle-post-edit', class: 'btn btn-default btn-sm js-toggle-collapse-link'
           = link_to '削除', post, remote: true, method: :delete, class: 'btn btn-link btn-sm pull-right', data: {confirm: '削除してもよろしいですか？', disable_with: '削除中...'}
-.post__comments
+.post__comments.js-comments
   = render 'comments/comments', post: post

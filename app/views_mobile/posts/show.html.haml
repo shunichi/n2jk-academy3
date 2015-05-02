@@ -1,7 +1,9 @@
 = link_to '< 戻る', user_path(@post.user)
-.mobile-main
-  .panel.panel-default
-    .panel-heading
-      = l @post.created_at
-    .panel-body
-      = markdown(@post.body)
+.panel.panel-default
+  .panel-heading
+    = image_tag @post.user.image, class: 'moblie-post__icon'
+    = l @post.created_at
+  .panel-body
+    = markdown(@post.body)
+.mobile-post__comment.js-comments
+  = render 'comments/comments', post: @post

@@ -1,24 +1,10 @@
-:sass
-  .comments
-    list-style: none
-    padding: 10px
-
-  .comment__user-icon
-    width: 40px
-    height: 40px
-
-  .comment
-
-  .comment__body
-    position: relative
-
 %ul.comments
   - post.comments.order(:created_at).each do |comment|
     %li.comment{data: {comment_id: comment.id}}
       .row
-        .col-md-1
+        .col-md-1.col-xs-2
           = image_tag comment.user.image, class: 'comment__user-icon'
-        .col-md-11
+        .col-md-11.col-xs-10
           .panel.panel-default
             .panel-body
               .comment__body.js-toggle-comment-edit
