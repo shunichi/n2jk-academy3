@@ -6,7 +6,9 @@ Rails.application.routes.draw do
     resources :posts, only: %i(new create update destroy) do
       resources :comments, only: %i(create update destroy)
     end
-    resource :user
+  end
+  namespace :mine do
+    resource :user, only: %i(update)
   end
 
   resources :users, only: %i(show) do
