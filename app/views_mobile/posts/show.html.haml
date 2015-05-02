@@ -4,4 +4,4 @@
     .panel-heading
       = l @post.created_at
     .panel-body
-      = simple_format(@post.body)
+      = markdown(@post.body)
