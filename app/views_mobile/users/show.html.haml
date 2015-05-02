@@ -1,0 +1,14 @@
+.mobile-header
+  = link_to '< 戻る', root_path
+.mobile-main
+  .mobile-user
+    = image_tag @user.image, class: 'mobile-user__icon'
+    .mobile-user__info-container
+      .mobile-user__info
+        %span.mobile-user__name
+          = @user.name
+        %span.mobile-user__posts-count
+          投稿数 #{@user.posts.count}件
+      .mobile-user__created-at
+        #{l @user.created_at.to_date} 入学
+  = render 'posts/index', posts: @user.posts

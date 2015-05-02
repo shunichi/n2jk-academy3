@@ -1,0 +1,7 @@
+= link_to '< 戻る', user_path(@post.user)
+.mobile-main
+  .panel.panel-default
+    .panel-heading
+      = l @post.created_at
+    .panel-body
+      = simple_format(@post.body)

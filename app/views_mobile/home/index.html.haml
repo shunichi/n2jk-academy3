@@ -1,0 +1,6 @@
+- if user_signed_in?
+  = render 'main'
+- else
+  .text-center
+    %h3 n2jkAcademy
+    = link_to 'GitHubアカウントでログイン', sign_in_path, class: 'btn btn-success'

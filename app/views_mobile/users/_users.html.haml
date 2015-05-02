@@ -1,0 +1,8 @@
+%ul.mobile-users
+  - users.each do |user|
+    %li.mobile-users__user
+      = link_to user, class: 'mobile-users__link' do
+        = image_tag user.image, class: 'mobile-users__user-icon'
+        .mobile-users__user-info
+          .mobile-users__user-name= user.name
+          .mobile-users__user-update-date= l user.updated_at.to_date

@@ -1,0 +1,6 @@
+%ul.list-group.mobile-posts
+  - posts.each do |post|
+    %li.list-group-item.mobile-post__container
+      = link_to [post.user, post], class: 'mobile-post__link' do
+        .mobile-post__date= l post.created_at.to_date
+        .mobile-post__title= post.title

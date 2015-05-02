@@ -1,0 +1,78 @@
+.mobile-users
+  list-style: none
+  padding: 0
+
+.mobile-users__user
+  position: relative
+  height: 80px
+  border-bottom: 1px solid $_gray-light
+  a
+    &:hover, &:focus
+      text-decoration: none
+
+.mobile-users__link
+  display: block
+  height: 100%
+  padding: 10px
+
+$_icon_size: 60px
+$_icon_margin: 10px
+$_user_info_offset: $_icon_size + $_icon_margin * 2
+
+.mobile-users__user-icon
+  position: absolute
+  margin: auto
+  top: 0
+  bottom: 0
+  left: $_icon_margin
+  width: $_icon_size
+  height: $_icon_size
+  +border-radius(50%)
+
+.mobile-users__user-info
+  width: 100%
+  height: 100%
+  padding-left: $_user_info_offset
+
+.mobile-users__user-name
+  color: $_black
+  font-size: 20px
+  font-weight: bold
+  margin-bottom: 4px
+  overflow: hidden
+  text-overflow: ellipsis
+  white-space: nowrap
+
+.mobile-users__user-update-date
+  font-size: 18px
+  color: $_gray
+
+.mobile-user
+  position: relative
+  height: 50px
+  +clearfix
+
+.mobile-user__icon
+  float: left
+  width: 40px
+  height: 40px
+  margin-right: 10px
+  +border-radius(50%)
+
+.mobile-user__info-container
+  float: left
+
+.mobile-user__info
+
+.mobile-user__name
+  font-size: 18px
+  color: $_black
+
+.mobile-user__posts-count
+  font-size: 12px
+  color: $_gray
+  margin-left: 8px
+
+.mobile-user__created-at
+  font-size: 12px
+  color: $_gray
