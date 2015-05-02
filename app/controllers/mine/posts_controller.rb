@@ -13,7 +13,7 @@ class Mine::PostsController < ApplicationController
         format.js { render }
       else
         format.html { render :new }
-        format.js { render 'failed' }
+        format.js { render 'shared/failed' }
       end
     end
   end
@@ -23,7 +23,7 @@ class Mine::PostsController < ApplicationController
       if @post.update(post_params)
         format.js { render  }
       else
-        format.js { render 'failed' }
+        format.js { render 'shared/failed' }
       end
     end
   end
