@@ -1,13 +1,18 @@
 class Mine::PostsController < ApplicationController
   before_action :set_post, only: [:update, :destroy]
 
+  def new
+  end
+
   def create
     @post = current_user.posts.build(post_params)
 
     respond_to do |format|
       if @post.save
+        format.html { redirect_to [current_user, @post] }
         format.js { render }
       else
+        format.html { render :new }
         format.js { render 'failed' }
       end
     end

@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root 'home#index'
 
   scope module: 'mine' do
-    resources :posts, only: %i(create update destroy) do
+    resources :posts, only: %i(new create update destroy) do
       resources :comments, only: %i(create update destroy)
     end
   end
