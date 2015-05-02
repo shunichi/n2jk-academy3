@@ -1,5 +1,5 @@
 .app
-  .app__sidebar.js-nicescroll
+  .app__sidebar.js-nicescroll.js-users
     = render 'users/users', users: User.write_some_post.order(posts_updated_at: :desc)
   .app__main.js-nicescroll
     .app__user-header.js-user-header
@@ -7,3 +7,4 @@
   .app__posts-list.js-posts-list.js-nicescroll
 
 = render 'posts/modal_form'
+= render 'mine/users/modal_form'
