@@ -1,4 +1,4 @@
-.panel.panel-default
+.panel.panel-default.mobile-post{data: {read_url: read_user_post_path(post.user, post)}}
   .panel-heading
     = image_tag post.user.image, class: 'moblie-post__icon'
     = l post.created_at.to_date

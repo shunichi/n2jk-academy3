@@ -4,5 +4,8 @@
       = link_to user, class: 'mobile-users__link' do
         = image_tag user.image, class: 'mobile-users__user-icon'
         .mobile-users__user-info
-          .mobile-users__user-name= user.name
+          .mobile-users__user-name
+            = user.name
+            - if user.has_unreads_for(current_user)
+              %span.unread-dot-inline.js-unread-dot
           .mobile-users__user-update-date= l user.updated_at.to_date

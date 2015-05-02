@@ -3,3 +3,8 @@
   = render 'posts/post', post: @post
 .mobile-post__comment.js-comments
   = render 'comments/comments', post: @post
+:coffee
+  $.ajax
+    url: $('[data-read-url]').data().readUrl
+    type: 'PATCH'
+    dataType: 'script'
