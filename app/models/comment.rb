@@ -11,6 +11,12 @@ class Comment < ActiveRecord::Base
     self.unreads.where(user_id: user.id).present?
   end
 
+  def notification_emails
+    emails = self.post.comments.joins(:user).where(users: {mail_notification: true}).where.not(users: {id: self.user.id}).pluck(:email)
+    emails.push(self.post.user.email) unless self.user == self.post.user
+    emails
+  end
+
   private
   def create_unreads
     User.where.not(id: self.user_id).each do |user|

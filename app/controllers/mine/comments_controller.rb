@@ -7,9 +7,10 @@ class Mine::CommentsController < ApplicationController
     @comment.user = current_user
     respond_to do |format|
       if @comment.save
+        NotificationMailer.new_comment(@comment).deliver_now!
         format.js { render }
       else
-        format.js { render 'failed' }
+        format.js { render 'shared/failed' }
       end
     end
   end
@@ -19,7 +20,7 @@ class Mine::CommentsController < ApplicationController
       if @comment.update(comment_params)
         format.js { render }
       else
-        format.js { render 'failed' }
+        format.js { render 'shared/failed' }
       end
     end
   end

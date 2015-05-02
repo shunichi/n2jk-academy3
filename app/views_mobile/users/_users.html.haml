@@ -1,3 +1,4 @@
+- users = User.write_some_post.order(posts_updated_at: :desc)
 %ul.mobile-users
   - users.each do |user|
     %li.mobile-users__user
