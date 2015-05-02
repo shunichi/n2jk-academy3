@@ -1,0 +1,8 @@
+.main
+  .content.markdown
+    = "n2jk-academy で #{@post.user.name} さんの新しい投稿がありました。"
+    %br
+    = markdown(@post.body)
+  .link= link_to 'ブラウザで確認する', root_url
+  .footer
+    = render 'footer'

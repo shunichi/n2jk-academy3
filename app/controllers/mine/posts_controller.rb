@@ -9,6 +9,7 @@ class Mine::PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
+        NotificationMailer.new_post(@post).deliver_now!
         format.html { redirect_to [current_user, @post] }
         format.js { render }
       else

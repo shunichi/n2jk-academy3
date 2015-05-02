@@ -42,6 +42,10 @@ class Post < ActiveRecord::Base
     destroyed
   end
 
+  def notification_emails
+    User.where(mail_notification: true).where.not(id: self.user.id).pluck(:email)
+  end
+
   private
   def create_unreads
     User.where.not(id: self.user_id).each do |user|
