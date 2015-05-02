@@ -14,7 +14,7 @@ class Comment < ActiveRecord::Base
   def notification_emails
     emails = self.post.comments.joins(:user).where(users: {mail_notification: true}).where.not(users: {id: self.user.id}).pluck(:email)
     emails.push(self.post.user.email) unless self.user == self.post.user
-    emails
+    emails.uniq
   end
 
   private
