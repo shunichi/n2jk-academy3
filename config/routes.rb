@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     end
   end
   namespace :mine do
-    resource :user, only: %i(update)
+    resource :user, only: %i(edit update)
   end
 
   resources :users, only: %i(show) do

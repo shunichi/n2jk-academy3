@@ -6,7 +6,7 @@
         = image_tag user.image, class: 'mobile-users__user-icon'
         .mobile-users__user-info
           .mobile-users__user-name
-            = user.name
+            = user.nickname
             - if user.has_unreads_for(current_user)
               %span.unread-dot-inline.js-unread-dot
           .mobile-users__user-update-date= l user.updated_at.to_date

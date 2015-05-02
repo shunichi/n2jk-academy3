@@ -1,0 +1,7 @@
+%h3
+  アカウント設定
+= simple_form_for current_user, url: mine_user_path, method: :patch do |f|
+  = f.input :nickname, label: 'ニックネーム'
+  = f.input :email, label: 'メールアドレス'
+  = f.input :mail_notification, label: 'メール通知'
+  = f.button :submit, class: 'btn btn-primary', data: {dismiss: '送信中...' }

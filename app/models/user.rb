@@ -8,6 +8,10 @@ class User < ActiveRecord::Base
 
   scope :write_some_post, -> { where(id: Post.pluck(:user_id).uniq) }
 
+  def nickname
+    super || self.name
+  end
+
   def self.create_by_github(auth)
     User.create!(
         github_id: auth[:uid],
