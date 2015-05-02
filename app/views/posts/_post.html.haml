@@ -1,6 +1,6 @@
 .panel.panel-default.post
   .panel-heading
-    .post__date= l post.created_at
+    .post__date= l post.created_at.to_date
   .panel-body
     .post__body.js-toggle-post-edit
       = markdown(post.body)

@@ -1,7 +1,7 @@
 .panel.panel-default
   .panel-heading
     = image_tag post.user.image, class: 'moblie-post__icon'
-    = l post.created_at
+    = l post.created_at.to_date
   .panel-body
     .mobile-post__body.js-toggle-post-edit
       = markdown(post.body)
