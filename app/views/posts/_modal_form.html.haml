@@ -7,6 +7,10 @@
         %h3.modal-title
           週報を書く
         .modal-body
+          %p
+            【何を書けば良いの？】
+          %p
+            あなたが週報で書くのは「学び」です。何を学んだか書いてください。他の人にも共有して意味があるように書きましょう。「学び」を書くために、学びのきっかけとなった出来事なども補足で書くといいでしょう。学びを抽出するスキルは成長には不可欠です。
           - post = current_user.posts.build()
           = simple_form_for post, remote: true, html: {id: 'post-form'} do |f|
             = f.input :body, label: false, input_html: {rows: 10}
